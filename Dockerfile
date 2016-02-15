@@ -125,3 +125,5 @@ USER root
 WORKDIR /home/build
 
 RUN rm -R czmq  jzmq  libcurve  libsodium  libzmq
+
+USER build
