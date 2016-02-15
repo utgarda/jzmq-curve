@@ -24,7 +24,7 @@ USER root
 
 WORKDIR /home/build/libsodium
 
-RUN make install; ldconfig; rm -R /home/build/libsodium
+RUN make install; ldconfig
 
 
 USER build
@@ -43,7 +43,7 @@ USER root
 
 WORKDIR /home/build/libzmq
 
-RUN make install; ldconfig; rm -R /home/build/libzmq
+RUN make install; ldconfig
 
 
 USER build
@@ -62,7 +62,7 @@ USER root
 
 WORKDIR /home/build/czmq
 
-RUN make install; ldconfig; rm -R /home/build/czmq
+RUN make install; ldconfig
 
 
 USER build
@@ -79,7 +79,7 @@ USER root
 
 WORKDIR /home/build/libcurve
 
-RUN make install; ldconfig; rm -R /home/build/libcurve
+RUN make install; ldconfig
 
 
 RUN echo deb 'http://dl.bintray.com/sbt/debian /' | tee -a /etc/apt/sources.list.d/sbt.list
@@ -120,3 +120,8 @@ WORKDIR /home/build/jzmq
 
 RUN /home/build/bin/mvn install -DskipTests=true -Dgpg.skip=true
 
+USER root
+
+WORKDIR /home/build
+
+RUN rm -R czmq  jzmq  libcurve  libsodium  libzmq
